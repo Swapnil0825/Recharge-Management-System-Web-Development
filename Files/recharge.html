@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/rechargecss.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="js/index_animations.js"></script>
+    <link rel="icon" href="img/mylogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <title>Dashboard</title>
+
+    <script type="text/javascript">
+        async function save_details() {
+            eel.btn_recharge($('#new_number').val(), $('#new_service').val(), $('#new_plan').val(), $('#new_amount').val())
+        };
+
+        eel.expose(recharge_return);
+        function recharge_return(status){
+            if (status == "success") {
+                alert("Recharge Successfull");
+                $('#new_number').val('');
+                $('#new_service').val('');
+                $('#new_plan').val('');
+                $('#new_amount').val('');
+            }
+            if (status == "failed") {
+                alert("Recharge Unsuccessfull. Some Error occured");
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="img/mylogo.png" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">RECHARGE SYSTEM</span>
+                    <span class="profession">Efficiency Is Everything</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="nav-link">
+                    <a href="dashboard.html">
+                        <i class='bx bx-home-alt icon'></i>
+                        <span class="text nav-text">Home</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="recharge.html">
+                        <i class='bx bx-dollar icon'></i>
+                        <span class="text nav-text">Recharge</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="wallet.html">
+                        <i class='bx bx-wallet icon'></i>
+                        <span class="text nav-text">Wallet Balance</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="Addmoney.html">
+                        <i class='bx bx-folder-plus icon'></i>
+                        <span class="text nav-text">Add Money</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#" onclick="window.open('https://about-Swapnil-Patil.netlify.app/','_blank')">
+                        <i class='bx bxs-face icon'></i>
+                        <span class="text nav-text">About</span>
+                    </a>
+                </li>
+                </ul>
+                </div>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' onclick="window.location.href='signlog.html'"></i>
+                        <span class="text nav-text" onclick="window.location.href='signlog.html'">Logout</span>
+                    </a>
+                </li>
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="text">Recharge Here</div>
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form action="">
+                    <h1>Enter Details </h1><br>
+                    <input type="number" minlength="10" maxlength="10" autocomplete="off" class="inputs" id="new_number" placeholder="Mobile Number">
+                    <input type="tel" list="provider" autocomplete="off" class="inputs" id="new_service" placeholder="Service Provider">
+                    <datalist id="provider">
+                        <option value="Jio"></option>
+                        <option value="Airtel"></option>
+                        <option value="Vodaphone"></option>
+                        <option value="BSNL"></option>
+                        <option value="Idea"></option>
+                    </datalist>
+                    <input type="text" list="plans" autocomplete="off" name="user_new_login" class="inputs" id="new_plan"placeholder="Plan">
+                    <datalist id="plans">
+                        <option value="Prepaid"></option>
+                        <option value="Postpaid"></option>
+                        <option value="Internet Only"></option>
+                        <option value="Calls only"></option>
+                    </datalist>
+                    <input type="text" autocomplete="off"  class="inputs" id="new_amount" placeholder="Amount">
+                    <h5>Transaction Date and Time auto-generated</h5>
+                    <button class="buttons" onclick="save_details();">RECHARGE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

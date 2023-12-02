@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/walletcss.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <link rel="icon" href="img/mylogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <title>wallet</title>
+    <script type="text/javascript">
+        async function save_inputs(){
+            eel.btn_balance($('#new_number').val())
+        }
+        eel.expose(balance_return);
+        function balance_return(details)
+        {
+            console.log(details)
+            if(details[0] > 0){
+                alert("Data Retrieved!")
+                document.getElementById("TransDate").innerHTML = "Transaction Date : " + details[7];
+                document.getElementById("TransTime").innerHTML = "Transaction Time : " + details[8];
+                document.getElementById("MobNo").innerHTML = "Mobile Number : " + details[1];
+                document.getElementById("Service").innerHTML = "Service Provider : " + details[9];
+                document.getElementById("Plan").innerHTML = "Recharge Plan : " + details[10];
+                document.getElementById("Wallet").innerHTML = "Wallet Balance : " + details[6];
+            }
+            else{
+                alert("Some Error Occured!");
+                return true
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="img/mylogo.png" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">RECHARGE SYSTEM</span>
+                    <span class="profession">Efficiency Is Everything</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="nav-link">
+                    <a href="dashboard.html">
+                        <i class='bx bx-home-alt icon'></i>
+                        <span class="text nav-text">Home</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="recharge.html">
+                        <i class='bx bx-dollar icon'></i>
+                        <span class="text nav-text">Recharge</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="wallet.html">
+                        <i class='bx bx-wallet icon'></i>
+                        <span class="text nav-text">Wallet Balance</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="Addmoney.html">
+                        <i class='bx bx-folder-plus icon'></i>
+                        <span class="text nav-text">Add Money</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#" onclick="window.open('https://about-Swapnil-Patil.netlify.app/','_blank')">
+                        <i class='bx bxs-face icon'></i>
+                        <span class="text nav-text">About</span>
+                    </a>
+                </li>
+                </ul>
+                </div>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' onclick="window.location.href='signlog.html'"></i>
+                        <span class="text nav-text" onclick="window.location.href='signlog.html'">Logout</span>
+                    </a>
+                </li>
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </nav>
+    <section class="home">
+        <div class="text">Wallet Balance</div>
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form action="">
+                    <h1>Enter Details</h1><br>
+                    <input type="number" minlength="10" maxlength="10" autocomplete="off" class="inputs" id="new_number" placeholder="Mobile Number">
+                    <button class="buttons" type="button" onclick="save_inputs();">CHECK BALANCE</button><br>
+                    <label id="TransDate"></label><br>
+                    <label id="TransTime"></label><br>
+                    <label id="MobNo"></label><br>
+                    <label id="Service"></label><br>
+                    <label id="Plan"></label><br>
+                    <label id="Wallet"></label><br>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script src="js/script.js"></script>
+</body>
+</html>
